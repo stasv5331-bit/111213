@@ -1,37 +1,31 @@
-from digits_basic import number_to_digits, print_digits
-from digits_subtraction import subtract_numbers
+from array_io import generate_digit_array, manual_digit_input, string_to_digits
+from digits_basic import print_digits
 
-def test_subtraction():
-    print("\n=== Тестирование вычитания ===")
+def test_input_generation():
+    print("\n=== Тестирование ввода и генерации ===")
     
-    # Тест 1: Простое вычитание
-    num1 = number_to_digits(1000)
-    num2 = number_to_digits(1)
-    diff_result = subtract_numbers(num1, num2)
-    print("1000 - 1 = ", end="")
-    print_digits(diff_result)
+    # Тест 1: Генерация
+    print("Сгенерированное число (10 цифр): ", end="")
+    gen_num = generate_digit_array(10)
+    print_digits(gen_num)
     
-    # Тест 2: С заимствованием
-    num3 = number_to_digits(1234)
-    num4 = number_to_digits(567)
-    diff_result2 = subtract_numbers(num3, num4)
-    print("1234 - 567 = ", end="")
-    print_digits(diff_result2)
+    print("Сгенерированное число (5 цифр): ", end="")
+    gen_num2 = generate_digit_array(5)
+    print_digits(gen_num2)
     
-    # Тест 3: Большие числа
-    num5 = number_to_digits(987654321)
-    num6 = number_to_digits(123456789)
-    diff_result3 = subtract_numbers(num5, num6)
-    print("987654321 - 123456789 = ", end="")
-    print_digits(diff_result3)
-    
-    # Тест 4: Попытка вычесть большее число
+    # Тест 2: Преобразование строки
     try:
-        num7 = number_to_digits(100)
-        num8 = number_to_digits(200)
-        diff_result4 = subtract_numbers(num7, num8)
+        digits_from_str = string_to_digits("0012345")
+        print("Строка '0012345' в цифрах: ", end="")
+        print_digits(digits_from_str)
     except ValueError as e:
-        print(f"Ошибка (как и ожидалось): {e}")
+        print(f"Ошибка: {e}")
+    
+    # Тест 3: Ручной ввод (закомментирован для автоматического тестирования)
+    # print("\nТест ручного ввода:")
+    # manual_num = manual_digit_input()
+    # print("Вы ввели: ", end="")
+    # print_digits(manual_num)
 
 if __name__ == "__main__":
-    test_subtraction()
+    test_input_generation()
